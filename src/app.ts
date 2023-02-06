@@ -10,7 +10,7 @@ import { env } from "./interfaces.js";
 
 async function app() {
   //create fastify instance. configure logger
-  const server = fastify({ logger: envToLogger(), trustProxy: "127.0.0.1" });
+  const server = fastify({ logger: envToLogger(), trustProxy: true });
 
   //set error handler
   server.setErrorHandler(errorHandler);
