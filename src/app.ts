@@ -6,13 +6,11 @@ import envToLogger from "./logger.js";
 import fastifyHelmet from "@fastify/helmet";
 import fastifyCors from "@fastify/cors";
 import fastifyStatic from "@fastify/static";
-import getImagePath from "./getImagePath.js";
 import { env } from "./interfaces.js";
 
 async function app() {
-  const publicPath = getImagePath();
   //create fastify instance. configure logger
-  const server = fastify({ logger: envToLogger() });
+  const server = fastify({ logger: envToLogger(), trustProxy: "127.0.0.1" });
 
   //set error handler
   server.setErrorHandler(errorHandler);
