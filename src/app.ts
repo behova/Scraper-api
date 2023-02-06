@@ -9,7 +9,7 @@ import fastifyStatic from "@fastify/static";
 import getImagePath from "./getImagePath.js";
 import { env } from "./interfaces.js";
 
-async function app(port: number) {
+async function app() {
   const publicPath = getImagePath();
   //create fastify instance. configure logger
   const server = fastify({ logger: envToLogger() });
@@ -34,7 +34,7 @@ async function app(port: number) {
   server.register(imageRoutes);
 
   //init server
-  server.listen({ port: port }, (err, address) => {
+  server.listen({ port: env.PORT }, (err, address) => {
     if (err) {
       server.log.error(err);
       process.exit(1);

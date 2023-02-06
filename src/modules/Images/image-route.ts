@@ -1,12 +1,10 @@
 import fastify, { FastifyInstance } from "fastify";
-import prisma from "../../prisma-client.js";
 import {
   getBulkImageHandler,
   getImageByPageHandler,
   getImageBySearchHandler,
 } from "./image-controller.js";
 import { $ref } from "./image-schema.js";
-import { getImageByPage, getImagesBulk } from "./image-service.js";
 
 /**
  * Encapsulates the routes
@@ -42,14 +40,9 @@ async function imageRoutes(fastify: FastifyInstance, options: Object) {
     handler: getImageBySearchHandler,
   });
 
-  // fastify.get("/images/search/:query", async (request, reply) => {
-  //   let {query} = request.params;
-  //   let result = await getImageByPage(query);
-
-  //   if (result) {
-  //     return result;
-  //   } else return { somthing: "wentwrong" };
-  // });
+  fastify.get("/images/status", function (request, reply) {
+    reply.send({ hello: "world" });
+  });
 }
 
 export default imageRoutes;
