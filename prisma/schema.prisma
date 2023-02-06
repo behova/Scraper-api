@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Image {
+  id        String   @id
+  thumbURL  String   @unique
+  fullURL   String   @unique
+  name      String
+  source    String
+  createdAt DateTime @default(now())
+  pallet    String
+}
