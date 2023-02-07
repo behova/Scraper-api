@@ -23,7 +23,7 @@ async function app() {
   //register plugins
   server.register(fastifyHelmet, { global: true });
   server.register(fastifyCors, {
-    origin: "2601:602:67f:340::7",
+    origin: "*",
     methods: ["GET"],
   });
   server.register(fastifyStatic, {
