@@ -21,11 +21,15 @@ async function app() {
   }
 
   //register plugins
-  server.register(fastifyHelmet, { global: true });
+  server.register(fastifyHelmet, {
+    global: true,
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+  });
   server.register(fastifyStatic, {
     root: env.IMAGES_PATH,
     prefix: "/public/",
   });
+  server.register(fastifyCors);
 
   //register routes with server instance
   server.register(imageRoutes);
