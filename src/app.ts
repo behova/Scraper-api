@@ -30,13 +30,6 @@ async function app() {
   //register routes with server instance
   server.register(imageRoutes);
 
-  //register cors
-  server.register(fastifyCors, {
-    origin: "*",
-    methods: ["GET"],
-    credentials: true,
-  });
-
   //init server
   server.listen({ port: env.PORT }, (err, address) => {
     if (err) {
