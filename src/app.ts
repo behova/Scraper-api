@@ -22,10 +22,6 @@ async function app() {
 
   //register plugins
   server.register(fastifyHelmet, { global: true });
-  server.register(fastifyCors, {
-    origin: "*",
-    methods: ["GET"],
-  });
   server.register(fastifyStatic, {
     root: env.IMAGES_PATH,
     prefix: "/public/",
@@ -33,6 +29,13 @@ async function app() {
 
   //register routes with server instance
   server.register(imageRoutes);
+
+  //register cors
+  server.register(fastifyCors, {
+    origin: "*",
+    methods: ["GET"],
+    credentials: true,
+  });
 
   //init server
   server.listen({ port: env.PORT }, (err, address) => {
