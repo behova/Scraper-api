@@ -3,7 +3,7 @@ import prisma from "../../prisma-client.js";
 
 //add passcode to arguments?
 
-async function getImageCount() {
+export async function getImageCount() {
   try {
     const count = await prisma.image.count();
     return count;
