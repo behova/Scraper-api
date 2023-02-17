@@ -30,8 +30,8 @@ export async function getImagesBulk(max: number) {
 export async function getImageByPage(page: number) {
   try {
     const result = await prisma.image.findMany({
-      skip: page * 25,
-      take: 25,
+      skip: page * 50,
+      take: 50,
       orderBy: {
         createdAt: "desc",
       },

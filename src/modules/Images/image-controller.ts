@@ -35,7 +35,7 @@ export async function getImageByPageHandler(
     const images = await getImageByPage(page);
     const imageTotal = await getImageCount();
     const totalPages = imageTotal
-      ? Math.floor(imageTotal / 25) - page
+      ? Math.floor(imageTotal / 50) - page
       : undefined;
     const nextPage = totalPages && totalPages > 0 ? page + 1 : undefined;
 
@@ -57,7 +57,7 @@ export async function getImageBySearchHandler(
 
     request.log.info(request.body.query);
 
-    return reply.code(201).send(images);
+    return reply.code(201).send({ images: images });
   } catch (error) {
     console.log(error);
     return reply.code(500).send(error);
