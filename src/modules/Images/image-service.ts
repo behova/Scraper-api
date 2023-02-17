@@ -32,6 +32,9 @@ export async function getImageByPage(page: number) {
     const result = await prisma.image.findMany({
       skip: page * 25,
       take: 25,
+      orderBy: {
+        createdAt: "desc",
+      },
     });
     return result;
   } catch (error) {
