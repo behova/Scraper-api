@@ -27,7 +27,7 @@ async function app() {
   });
   server.register(fastifyStatic, {
     root: env.IMAGES_PATH,
-    prefix: "/public/",
+    prefix: "/api/public/",
   });
   server.register(fastifyCors);
 

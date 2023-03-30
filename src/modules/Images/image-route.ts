@@ -15,7 +15,7 @@ import { $ref } from "./image-schema.js";
 async function imageRoutes(fastify: FastifyInstance, options: Object) {
   fastify.route({
     method: "GET",
-    url: "/images/:amount",
+    url: "/api/images/:amount",
     schema: {
       params: $ref("maxImageResponseSchema"),
     },
@@ -24,7 +24,7 @@ async function imageRoutes(fastify: FastifyInstance, options: Object) {
 
   fastify.route({
     method: "GET",
-    url: "/:page",
+    url: "/api/:page",
     schema: {
       params: $ref("maxPageAmountSchema"),
     },
@@ -33,14 +33,14 @@ async function imageRoutes(fastify: FastifyInstance, options: Object) {
 
   fastify.route({
     method: "POST",
-    url: "/search",
+    url: "/api/search",
     schema: {
       body: $ref("searchInput"),
     },
     handler: getImageBySearchHandler,
   });
 
-  fastify.get("/images/status", function (request, reply) {
+  fastify.get("/api/status", function (request, reply) {
     reply.send({ hello: "world" });
   });
 }
