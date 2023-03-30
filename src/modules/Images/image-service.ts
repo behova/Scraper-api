@@ -52,7 +52,7 @@ async function getImageBySource(source: Source, page: number) {
           skip: page * 25,
           take: 25,
           where: {
-            source: {
+            sourceName: {
               contains: "redd.it",
             },
           },
@@ -63,7 +63,7 @@ async function getImageBySource(source: Source, page: number) {
           skip: page * 25,
           take: 25,
           where: {
-            source: {
+            sourceName: {
               contains: "i.4cdn.org",
             },
           },
@@ -83,7 +83,7 @@ export async function searchImages(searchString: string) {
       //skip: page * 25, //do not use
       take: 30,
       where: {
-        name: {
+        sourceName: {
           search: searchString,
         },
       },
@@ -96,5 +96,3 @@ export async function searchImages(searchString: string) {
     await prisma.$disconnect();
   }
 }
-
-function updatePallet(id: number, pallet: string) {}

@@ -2,11 +2,10 @@ import { buildJsonSchemas } from "fastify-zod";
 import { z } from "zod";
 
 const createImageSchema = z.object({
-  thumbURL: z.string(),
-  fullURL: z.string(),
-  name: z.string(),
-  source: z.string(),
+  fileName: z.string(),
+  sourceName: z.string(),
   pallet: z.string(),
+  dimensions: z.string(),
 });
 
 const maxImageResponseSchema = z.object({

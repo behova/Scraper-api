@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch"]
 }
 
@@ -9,11 +9,10 @@ datasource db {
 }
 
 model Image {
-  id        String   @id
-  thumbURL  String   @unique
-  fullURL   String   @unique
-  name      String
-  source    String
-  createdAt DateTime @default(now())
-  pallet    String
+  id         String   @id
+  fileName   String   @unique
+  sourceName String
+  pallet     String
+  dimensions String
+  createdAt  DateTime @default(now())
 }
