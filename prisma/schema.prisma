@@ -11,7 +11,7 @@ datasource db {
 model Image {
   id         String   @id
   fileName   String   @unique
-  sourceName String
+  sourceName String   @unique
   pallet     String
   dimensions String
   createdAt  DateTime @default(now())
